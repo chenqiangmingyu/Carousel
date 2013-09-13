@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Carousel</title>
+  <style type="text/css">
+    /* Base */
+    html, body, ul, li, ol, dl, dd, dt, p, h1, h2, h3, h4, h5, h6, form, fieldset, legend, img { 
+      margin:0; 
+      padding:0;
+    }
+    fieldset, img { 
+      border:none; 
+    }
+
+    .clearfix:after { 
+      content:"."; 
+      display:block; 
+      height:0; 
+      visibility:hidden; 
+      clear:both; 
+    }
+
+    .clearfix { 
+      zoom:1; 
+    }
+
+    .clearit { 
+      clear:both; 
+      height:0; 
+      font-size:0; 
+      overflow:hidden; 
+    }
+
+    
+    /* Carousel wrap */
+    .carousel{
+      width: 870px;
+      height: 500px;
+      position: relative;
+      overflow: hidden;
+      margin: 50px auto 0;
+    }
+
+
+
+    .carousel img {
+      width: auto;
+      height: auto\9;
+      max-width: 100%;
+      display: block;
+    }
+
+    /* Carousel indicators */
+    .carousel .carousel-indicators{
+      position: absolute;
+      z-index: 900;
+      top: 10px;
+      right: 10px;  
+    }
+
+    .carousel .carousel-indicators li{
+      width: 10px;
+      height: 10px;
+      border-radius: 5px;
+      background-color: #fff;
+      float: left;
+      margin-right: 5px;
+      display: inline;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .carousel .carousel-indicators li.active{
+      background-color: #0ff;
+    }
+
+
+    /* Carousel item */
+    .carousel .carousel-inner{
+      position: relative;
+      z-index: 100;
+      width: 100%;
+      height: 100%;
+    }
+
+    .carousel-inner .item{
+      width: 100%;
+      height: 100%;
+      display: none;
+      left: 0px;
+      top: 0px;
+      position: absolute;
+    }
+    
+
+    .carousel .carousel-caption {
+      position: absolute;
+      z-index: 500;
+      color: #fff;
+      left: 0px;
+      bottom: 0px;
+      background-color: rgba(0, 0, 0, .6);
+      padding: 20px 10px;
+    }
+
+    .carousel .carousel-caption h4{
+      line-height: 30px;
+      font-size: 18px;
+    }
+
+    /* Carousel arrow */
+    .carousel .carousel-left-control,
+    .carousel .carousel-right-control {
+      background: none repeat scroll 0 0 #222222;
+      border: 3px solid #FFFFFF;
+      border-radius: 23px 23px 23px 23px;
+      color: #FFFFFF;
+      font-size: 60px;
+      font-weight: 100;
+      height: 40px;
+      line-height: 30px;
+      margin-top: -20px;
+      opacity: 0.5;
+      position: absolute;
+      text-align: center;
+      top: 40%;
+      width: 40px;
+      position: absolute;
+      z-index: 900;
+      text-decoration: none;
+    }
+
+    .carousel .carousel-left-control {
+      left: 15px;
+    }
+
+    .carousel .carousel-right-control {
+      right: 15px;
+    }
+
+
+    /* Responsive*/
+    @media screen and (max-width: 1000px){
+      .carousel{
+        width: 60%;
+        height: auto;
+      }
+
+      .carousel-inner .item {
+        position: relative;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="carousel slide">
+  <ol class="carousel-indicators clearfix" id="carousel-list">
+    <li data-slide-to="0" class="active"></li>
+    <li data-slide-to="1"></li>
+    <li data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner" id="myCarousel">
+    <div class="item">
+      <img src="images/01.jpg" alt="">
+      <div class="carousel-caption">
+        <h4>First Thumbnail label</h4>
+        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+      </div>
+    </div>
+    <div class="item">
+      <img src="images/02.jpg" alt="">
+      <div class="carousel-caption">
+        <h4>Second Thumbnail label</h4>
+        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+      </div>
+    </div>
+    <div class="item">
+      <img src="images/03.jpg" alt="">
+      <div class="carousel-caption">
+        <h4>Third Thumbnail label</h4>
+        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+      </div>
+    </div>
+  </div>
+  <a class="carousel-left-control" href="javascript:;" id="carousel-left" data-slide="prev">&lsaquo;</a>
+  <a class="carousel-right-control" href="javascript:;" id="carousel-right" data-slide="next">&rsaquo;</a>
+</div>
+</body>
+<script type="text/javascript" src="js/Carousel.js"></script>
+<script type="text/javascript">
+  new Carousel({
+    container : document.getElementById("myCarousel"),        //主容器
+    leftButton : document.getElementById("carousel-left"),    //左移按钮
+    rightButton : document.getElementById("carousel-right"),  //右移按钮
+    carouselList : document.getElementById("carousel-list"),  //列表容器
+    autoplay : false,                                         //自动播放,需要时设为播放时间间隔 如autoplay:5,单位s
+    vlign : false,                                            //垂直滚动
+    circle : true,                                            //循环
+    sawtooth : 10,                                            //锯齿程度，适配于不支持transition的低级浏览器
+    slideDuring : 0.5                                         //滚动周期
+  });
+</script>
+</html>
